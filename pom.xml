@@ -142,13 +142,6 @@
             <version>${jackson.version}</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>it.sella.externals.fabrickcore</groupId>-->
-<!--            <artifactId>fabrickcore-spring</artifactId>-->
-<!--            <version>0.3.14</version>-->
-<!--        </dependency>-->
-
-        <!-- STARTER -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
