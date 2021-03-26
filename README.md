@@ -21,18 +21,11 @@ At this point run the microservice using as main class my.company.project.DevApp
 
 The following classes will be executed:
 
-1. 
-	my.company.project.common.interceptor.LoggerInterceptor - it will send the events to the kafka broker
-2. 
-	my.company.project.service.myfunctionality.logging.events.messaging.consumer.CreateLoggingRequestEventConsumer
-	my.company.project.service.myfunctionality.logging.events.messaging.consumer.CreateLoggingResponseEventConsumer
-	my.company.project.service.myfunctionality.logging.events.messaging.consumer.CreateLoggingInternalEventConsumer
+1. MyController	   
+2. MyEventConsumer
 
-
-Finally, Check the console log. You should see something like this: 
-...
-2021-03-25 16:47:07.298 [http-nio-9185-exec-3][881ad091450c81e5][881ad091450c81e5][] -  INFO  my.company.project.common.interceptor.LoggerInterceptor  - Incoming request: [GET][http://localhost:9185/api/error][host=localhost:9185;connection=keep-alive;cache-control=no-cache;user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36;auth-token=111;postman-token=ebafb154-54cb-d262-feec-304e79a5df0f;accept=*/*;sec-fetch-site=none;sec-fetch-mode=cors;sec-fetch-dest=empty;accept-encoding=gzip, deflate, br;accept-language=it-IT,it;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6;cookie=JSESSIONID=2EA1A93F8EE5C4DF3188C037C14B681C][{}][0:0:0:0:0:0:0:1]
-...
-2021-03-25 16:47:07.305 [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1][687b49129f1c5e9b][47d46202bb7d8cc6][687b49129f1c5e9b] -  INFO  my.company.project.service.myfunctionality.logging.events.messaging.consumer.CreateLoggingRequestEventConsumer  - Received new event='CREATE_REQUEST_LOGGING': my.company.project.kafka.dto.logging.RequestEvent@47edf1ae
-...
-2021-03-25 16:47:07.316 [org.springframework.kafka.KafkaListenerEndpointContainer#2-0-C-1][83cbcd24c392d18a][35c308c1790f89e0][83cbcd24c392d18a] -  INFO  my.company.project.service.myfunctionality.logging.events.messaging.consumer.CreateLoggingResponseEventConsumer  - Received new event='CREATE_RESPONSE_LOGGING': my.company.project.kafka.dto.logging.ResponseEvent@5556cd1d
+Finally, Check the console log. You should see something like this:
+2021-03-26 10:05:49.825 [http-nio-9185-exec-4][77f01208383f07b4][77f01208383f07b4][] -  INFO  my.company.project.service.MyController  - Called!
+2021-03-26 10:05:49.826 [http-nio-9185-exec-4][77f01208383f07b4][77f01208383f07b4][] -  DEBUG my.company.project.service.MyController  - Sending event 'MyEvent'=MyEvent{id='111111'} to: my.topic
+2021-03-26 10:05:49.848 [kafka-producer-network-thread | myApplicationName-1][][][] -  DEBUG my.company.project.service.MyController  - The event 'MyEvent'=MyEvent{id='111111'} has been sent to the topic=my.topic correctly!
+2021-03-26 10:05:49.853 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1][9b6090ff79ab6eee][112de37698c09e2a][9b6090ff79ab6eee] -  INFO  my.company.project.service.MyEventConsumer  - Received new event='MyEvent': MyEvent{id='111111'}
