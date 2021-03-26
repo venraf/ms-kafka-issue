@@ -28,8 +28,8 @@
         <!--        <spring.boot.version>2.1.9.RELEASE</spring.boot.version>-->
         <!--        <spring-cloud-dependencies.version>Greenwich.SR6</spring-cloud-dependencies.version>-->
 
-        <!--        <spring.kafka.version>2.5.10.RELEASE</spring.kafka.version>-->
-        <!--        <kafka.client.version>2.4.1</kafka.client.version>-->
+        <spring.kafka.version>2.5.10.RELEASE</spring.kafka.version>
+        <kafka.client.version>2.4.1</kafka.client.version>
     </properties>
 
     <dependencyManagement>
@@ -54,20 +54,20 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-            <!--            <version>${spring.kafka.version}</version>-->
-            <!--            <exclusions>-->
-            <!--                <exclusion>-->
-            <!--                    <groupId>org.apache.kafka</groupId>-->
-            <!--                    <artifactId>kafka-clients</artifactId>-->
-            <!--                </exclusion>-->
-            <!--            </exclusions>-->
+            <version>${spring.kafka.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka-clients</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.kafka</groupId>-->
-        <!--            <artifactId>kafka-clients</artifactId>-->
-        <!--            <version>${kafka.client.version}</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.client.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
