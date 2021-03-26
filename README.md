@@ -5,19 +5,13 @@ In order to perform a test you need kafka and mongodb installed on your local ma
 - Start Docker and wait until ot will be upper and running
 - Execute the command "docker-compose up" from the the folder that contains the file docker-compose.yml
 
-
 If you have already these software installed, be sure that the properties point to the right addresses:
 
-	spring.data.mongodb.host=localhost
-	spring.data.mongodb.port=27017
 	spring.kafka.bootstrap-servers=localhost:9092
 
 After that, you can build the microservice using the command: mvn clean install -P dev
 
-Since the project is very large, i moved all dependencies declarations specified in other project modules (directly and indirectly related to the main one) in this project. This will make troubleshooting easier.
-I also moved a lot of java files in the same project. Indeed, the structure of the resulting projects is unclear.
-
-At this point run the microservice using as main class my.company.project.DevAppStartup (with DEV profile set -> spring.profiles.active=${ACTIVE_PROFILE:DEV}) and invoke the url http://localhost:9185/api/v1.0/resources/1
+At this point run the microservice using as main class my.company.project.DevAppStartup (with DEV profile set -> spring.profiles.active=${ACTIVE_PROFILE:DEV}) and invoke the url http://localhost:9185/api/v1.0/resources/111111
 
 The following classes will be executed:
 
