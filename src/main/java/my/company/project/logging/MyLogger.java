@@ -1,25 +1,22 @@
 package my.company.project.logging;
 
-import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class Logger implements ILogger {
+public class MyLogger implements ILogger {
 
-    private final org.apache.logging.log4j.Logger LOGGER;
+    private Logger LOGGER = LoggerFactory.getLogger(MyLogger.class);
 
-    public Logger() {
-        this.LOGGER = LogManager.getLogger();
+    public MyLogger() {
+        this.LOGGER = LoggerFactory.getLogger(MyLogger.class);
     }
 
-    public Logger(Class c) {
-        this.LOGGER = LogManager.getLogger(c);
+    public MyLogger(Class c) {
+        this.LOGGER = LoggerFactory.getLogger(c);
     }
 
-    public Logger(String name) {
-        this.LOGGER = LogManager.getLogger(name);
-    }
-
-    public Logger(org.apache.logging.log4j.Logger logger) {
-        this.LOGGER = logger;
+    public MyLogger(String name) {
+        this.LOGGER = LoggerFactory.getLogger(name);
     }
 
     @Override
@@ -29,7 +26,7 @@ public class Logger implements ILogger {
 
     @Override
     public void debug(Throwable throwable) {
-        this.LOGGER.debug(throwable);
+        this.LOGGER.debug("", throwable);
     }
 
     @Override
@@ -49,7 +46,7 @@ public class Logger implements ILogger {
 
     @Override
     public void info(Throwable throwable) {
-        this.LOGGER.info(throwable);
+        this.LOGGER.info("", throwable);
     }
 
     @Override
@@ -69,7 +66,7 @@ public class Logger implements ILogger {
 
     @Override
     public void warn(Throwable throwable) {
-        this.LOGGER.warn(throwable);
+        this.LOGGER.warn("", throwable);
     }
 
     @Override
@@ -89,7 +86,7 @@ public class Logger implements ILogger {
 
     @Override
     public void error(Throwable throwable) {
-        this.LOGGER.error(throwable);
+        this.LOGGER.error("", throwable);
     }
 
     @Override

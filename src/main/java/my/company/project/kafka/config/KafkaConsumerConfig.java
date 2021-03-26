@@ -1,6 +1,6 @@
 package my.company.project.kafka.config;
 
-import my.company.project.logging.Logger;
+import my.company.project.logging.MyLogger;
 import my.company.project.kafka.dto.DeadLetterObject;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -27,7 +27,7 @@ import java.util.UUID;
 public class KafkaConsumerConfig {
 
     public static final String TRUSTED_PACKAGES = "my.company.*";
-    private final Logger log = new Logger(this.getClass());
+    private final MyLogger log = new MyLogger(this.getClass());
 
     protected DeadLetterProducerConfig deadLetter;
     protected KafkaProperties kafkaProperties;

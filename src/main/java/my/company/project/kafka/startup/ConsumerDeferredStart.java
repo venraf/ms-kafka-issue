@@ -1,6 +1,6 @@
 package my.company.project.kafka.startup;
 
-import my.company.project.logging.Logger;
+import my.company.project.logging.MyLogger;
 import org.apache.kafka.common.errors.TimeoutException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -15,7 +15,7 @@ import java.util.UUID;
 @Service
 public class ConsumerDeferredStart {
 
-	private final Logger log = new Logger(this.getClass());
+	private final MyLogger log = new MyLogger(this.getClass());
 
 	@Autowired
 	KafkaListenerEndpointRegistry	kafkaRegistry;

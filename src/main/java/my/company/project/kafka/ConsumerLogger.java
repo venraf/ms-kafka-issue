@@ -1,6 +1,6 @@
 package my.company.project.kafka;
 
-import my.company.project.logging.Logger;
+import my.company.project.logging.MyLogger;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class ConsumerLogger {
 
 
-	private final Logger log = new Logger(this.getClass());
+	private final MyLogger log = new MyLogger(this.getClass());
 	@Around("@annotation(EventLogger)")
 	public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
 		long start = System.currentTimeMillis();
