@@ -1,7 +1,7 @@
-package my.company.project.kafka.service;
+package my.company.project.kafka;
 
-import my.company.project.kafka.properties.KafkaConsumerProperties;
-import my.company.project.logging.MyLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 
 import java.util.concurrent.TimeUnit;
@@ -9,10 +9,10 @@ import java.util.function.Function;
 
 public class KafkaHelper {
 
+    private Logger log = LoggerFactory.getLogger(KafkaHelper.class);
     private final KafkaListenerEndpointRegistry registry;
     private final KafkaConsumerProperties properties;
 
-    private final MyLogger LOGGER = new MyLogger(KafkaHelper.class);
 
     public KafkaHelper(KafkaListenerEndpointRegistry registry, KafkaConsumerProperties properties) {
         this.registry = registry;
@@ -37,7 +37,7 @@ public class KafkaHelper {
                         c.getContainerProperties().setIdleBetweenPolls(1000);
                         c.setAutoStartup(true);
                     } catch (Throwable e) {
-                        LOGGER.warn("interrupt exception", e);
+                        log.warn("interrupt exception", e);
                     }
                     if (!c.isRunning()) {
                         c.start();
@@ -57,7 +57,7 @@ public class KafkaHelper {
                         run++;
                     }
                 } catch (Throwable e) {
-                    LOGGER.warn("interrupt exception", e);
+                    log.warn("interrupt exception", e);
                 }
             }).start();
             return true;
@@ -74,7 +74,7 @@ public class KafkaHelper {
             new Thread(() -> {
                 c.setAutoStartup(false);
                 if (c.isRunning()) {
-                    LOGGER.warn("Stopping listener...");
+                    log.warn("Stopping listener...");
                     c.stop();
                 }
             }).start();

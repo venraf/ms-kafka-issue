@@ -1,4 +1,4 @@
-package my.company.project.kafka.properties;
+package my.company.project.kafka;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;

@@ -96,6 +96,9 @@
     <profiles>
         <profile>
             <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <start-class>my.company.project.DevAppStartup</start-class>
             </properties>
